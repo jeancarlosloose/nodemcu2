@@ -8,18 +8,7 @@ function verification(sample){
         return "Normal"
 }
 
-function variousDevices(arrayNames){
-    const vectorReturn = [];
-    console.log(arrayNames)
-    for(const element of arrayNames) {
-        Sample.findOne({deviceName : element}).sort('-createdAt').then(
-            result =>{
-                return vectorReturn.push(result);
-            }
-        )
-    }
-    return vectorReturn;
-}
+
 
 const SampleController = {
 
@@ -33,9 +22,13 @@ const SampleController = {
         return res.json(sample)
     },
 
+
     async getLasts(req,res){
-        let result = variousDevices(req.body);
-        return res.json(result);
+        const samples = []
+        for (let element of req.body.array) {
+            samples.push(await oneSample(element))
+        }
+        return res.json(samples)
     },
 
 
@@ -51,3 +44,5 @@ const SampleController = {
 }
 
 module.exports = SampleController;
+
+//deploy

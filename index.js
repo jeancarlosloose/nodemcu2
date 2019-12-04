@@ -26,6 +26,7 @@ app.use(express.json());
 app.use(cors())
 
 
+
 mongoose.connect("mongodb+srv://nmcu:nmcu@estudos-aga7s.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser : true,
     useFindAndModify: false,

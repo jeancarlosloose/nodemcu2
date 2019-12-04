@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const Device = new Schema(
     {
-        deviceName: String,
+        name: String,
+        alias: String,
     },
     {
         timestamps : true
